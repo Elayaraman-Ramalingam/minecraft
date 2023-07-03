@@ -10,20 +10,52 @@ public class UserDAO {
 		return users;
 	}
 	
-	public void create() {
-		
-		User user =  new User();
-		
-		user.setId(124);
-		user.setfName("Elaya");
-		user.setEmail("124@google.com");
-		user.setPhone(9344048138l);
-		user.setPasswd("P@$$w0rD");
-		user.setStatus(true);
-		
-		UserList.listOfUsers[0] = user;
-		return ;
-		
+	public void create( User user) {
+		User[] arr =  UserList.listOfUsers;
+		for(int i = 0; i < arr.length ; i++) {
+			User index = arr[i];
+			if(index == null) {
+				arr[i] = user;
+				break;
+			}
+		}
+		return;
 	}
+	
+	public void update(int id,User user) {
+		User[] arr =  UserList.listOfUsers;
+		for(int i=0; i < arr.length;i++) {
+			User index = UserList.listOfUsers[i];
+			if(index == null) { continue;}
+			if(index.getId()== id) {
+				arr[i] = user;
+				break;
+			}
+		}
+	}
+	
+	public void delete (int UserID) {
+		User[] userList = UserList.listOfUsers;
+		
+		for(int i=0; i < userList.length;i++) {
+			User index = userList[i];
+			if(index.getId()==UserID) {
+				index.setStatus(false);
+				break;
+			}
+		}
+	}
+	public void findById(int Id) {
+		User[] userList = UserList.listOfUsers;
+		for(int i=0; i < userList.length;i++) {
+			User index = userList[i];
+			if(index.getId()== Id) {
+				index.setStatus(false);
+				break;
+			}
+		}
+		}
+	
+
 
 }

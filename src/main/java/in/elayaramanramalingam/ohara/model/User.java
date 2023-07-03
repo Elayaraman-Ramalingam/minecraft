@@ -72,7 +72,7 @@ public class User {
 	String email;
 	long phone;
 	String passwd;
-	boolean status;
+	boolean status = true;
 	
 	public String fullName() {
 		return fName.concat(" ").concat(sName);
