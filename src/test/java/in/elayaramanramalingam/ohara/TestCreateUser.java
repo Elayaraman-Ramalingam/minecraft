@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import in.elayaramanramalingam.ohara.model.User;
 import in.elayaramanramalingam.ohara.services.UserServices;
+import in.elayaramanramalingam.ohara.exception.ValidationException;
 
 public class TestCreateUser {
 
@@ -38,9 +39,10 @@ public class TestCreateUser {
 		});
 		String exceptedMessage = "Invalid user input";
 		String receivedMessage = exception.getMessage();
-		
+
 		assertTrue(exceptedMessage.equals(receivedMessage));
 	}
+
 	@Test
 	public void testCreateUserWithEmailNull() throws Exception {
 		UserServices userServices = new UserServices();
@@ -53,14 +55,15 @@ public class TestCreateUser {
 		user.setPasswd("P@$$w0rD");
 		user.setStatus(true);
 
-		Exception exception = assertThrows(Exception.class, () -> {
+		Exception exception = assertThrows(ValidationException.class, () -> {
 			userServices.create(user);
 		});
 		String exceptedMessage = "Email cannot be empty or null";
 		String receivedMessage = exception.getMessage();
-		
+
 		assertTrue(exceptedMessage.equals(receivedMessage));
 	}
+
 	@Test
 	public void testCreateUserWithEmailEmpty() throws Exception {
 		UserServices userServices = new UserServices();
@@ -73,12 +76,94 @@ public class TestCreateUser {
 		user.setPasswd("P@$$w0rD");
 		user.setStatus(true);
 
-		Exception exception = assertThrows(Exception.class, () -> {
+		Exception exception = assertThrows(ValidationException.class, () -> {
 			userServices.create(user);
 		});
 		String exceptedMessage = "Email cannot be empty or null";
 		String receivedMessage = exception.getMessage();
-		
+
+		assertTrue(exceptedMessage.equals(receivedMessage));
+	}
+	@Test
+	public void testCreateUserWithPasswordNull() throws Exception {
+		UserServices userServices = new UserServices();
+		User user = new User();
+
+		user.setId(124);
+		user.setfName("Elaya");
+		user.setEmail("124@google.com");
+		user.setPhone(9344048138l);
+		user.setPasswd(null);
+		user.setStatus(true);
+
+		Exception exception = assertThrows(ValidationException.class, () -> {
+			userServices.create(user);
+		});
+		String exceptedMessage = "password cannot be empty or null";
+		String receivedMessage = exception.getMessage();
+
+		assertTrue(exceptedMessage.equals(receivedMessage));
+	}
+
+	@Test
+	public void testCreateUserWithPasswordEmpty() throws Exception {
+		UserServices userServices = new UserServices();
+		User user = new User();
+
+		user.setId(124);
+		user.setfName("Elaya");
+		user.setEmail("124@google.com");
+		user.setPhone(9344048138l);
+		user.setPasswd("");
+		user.setStatus(true);
+
+		Exception exception = assertThrows(ValidationException.class, () -> {
+			userServices.create(user);
+		});
+		String exceptedMessage = "password cannot be empty or null";
+		String receivedMessage = exception.getMessage();
+
+		assertTrue(exceptedMessage.equals(receivedMessage));
+	}
+	@Test
+	public void testCreateUserWithFirstnameNull() throws Exception {
+		UserServices userServices = new UserServices();
+		User user = new User();
+
+		user.setId(124);
+		user.setfName(null);
+		user.setEmail("124@google.com");
+		user.setPhone(9344048138l);
+		user.setPasswd("password");
+		user.setStatus(true);
+
+		Exception exception = assertThrows(ValidationException.class, () -> {
+			userServices.create(user);
+		});
+		String exceptedMessage = "Firstname cannot be empty or null";
+		String receivedMessage = exception.getMessage();
+
+		assertTrue(exceptedMessage.equals(receivedMessage));
+	}
+
+	@Test
+	public void testCreateUserWithFirstnameEmpty() throws Exception {
+		UserServices userServices = new UserServices();
+		User user = new User();
+
+		user.setId(124);
+		user.setfName("");
+		user.setEmail("124@google.com");
+		user.setPhone(9344048138l);
+		user.setPasswd("password");
+		user.setStatus(true);
+
+		Exception exception = assertThrows(ValidationException.class, () -> {
+			userServices.create(user);
+		});
+		String exceptedMessage = "Firstname cannot be empty or null";
+		String receivedMessage = exception.getMessage();
+
 		assertTrue(exceptedMessage.equals(receivedMessage));
 	}
 }

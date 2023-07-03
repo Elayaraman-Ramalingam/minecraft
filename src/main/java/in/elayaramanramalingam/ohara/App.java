@@ -18,7 +18,7 @@ public class App {
 			
 			user.setId(124);
 			user.setfName("Elaya");
-			user.setEmail("");
+			user.setEmail("mmm");
 			user.setPhone(9344048138l);
 			user.setPasswd("P@$$w0rD");
 			user.setStatus(true);
