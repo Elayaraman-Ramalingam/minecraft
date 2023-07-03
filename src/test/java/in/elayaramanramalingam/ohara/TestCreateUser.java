@@ -52,9 +52,6 @@ public class TestCreateUser {
 		user.setPhone(9344048138l);
 		user.setPasswd("P@$$w0rD");
 		user.setStatus(true);
-		assertDoesNotThrow(() -> {
-			userServices.create(user);
-		});
 
 		Exception exception = assertThrows(Exception.class, () -> {
 			userServices.create(user);
@@ -64,6 +61,7 @@ public class TestCreateUser {
 		
 		assertTrue(exceptedMessage.equals(receivedMessage));
 	}
+	@Test
 	public void testCreateUserWithEmailEmpty() throws Exception {
 		UserServices userServices = new UserServices();
 		User user = new User();
@@ -74,9 +72,6 @@ public class TestCreateUser {
 		user.setPhone(9344048138l);
 		user.setPasswd("P@$$w0rD");
 		user.setStatus(true);
-		assertDoesNotThrow(() -> {
-			userServices.create(user);
-		});
 
 		Exception exception = assertThrows(Exception.class, () -> {
 			userServices.create(user);

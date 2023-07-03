@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="in.elayaramanramalingam.ohara.TestCreateUser" time="0.005" errors="0" skipped="0">
+<testsuite tests="4" failures="2" name="in.elayaramanramalingam.ohara.TestCreateUser" time="0.049" errors="0" skipped="0">
   <properties>
     <property name="jansi.mode" value="force"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -26,7 +26,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 11"/>
-    <property name="classworlds.conf" value="C:\software\Eclipse_ide_workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf1610875568105874661.tmp"/>
+    <property name="classworlds.conf" value="C:\software\Eclipse_ide_workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf13291477772659760593.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\software\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.6.v20230204-1729\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Users/ElayaramanRamalingam/Downloads/eclipse-jee-2023-03-R-win32-x86_64 (1)/eclipse//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.6.v20230204-1729/jre/bin/server;C:/Users/ElayaramanRamalingam/Downloads/eclipse-jee-2023-03-R-win32-x86_64 (1)/eclipse//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.6.v20230204-1729/jre/bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\nodejs\;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Java\jdk-17\bin;C:\Users\ElayaramanRamalingam\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\ElayaramanRamalingam\AppData\Local\Programs\Python\Python311\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\ElayaramanRamalingam\AppData\Local\Microsoft\WindowsApps;C:\Users\ElayaramanRamalingam\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ElayaramanRamalingam\AppData\Local\GitHubDesktop\bin;C:\Users\ElayaramanRamalingam\.dotnet\tools;;C:\Program Files\JetBrains\PyCharm Community Edition 2023.1.1\bin;;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1.2\bin;;C:\Users\ElayaramanRamalingam\Downloads\eclipse-jee-2023-03-R-win32-x86_64 (1)\eclipse;;."/>
     <property name="jdk.debug" value="release"/>
@@ -58,8 +58,39 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="java.vendor.version" value="Temurin-17.0.6+10"/>
-    <property name="m2e.build.project.data.socket.port" value="65509"/>
+    <property name="m2e.build.project.data.socket.port" value="49822"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="in.elayaramanramalingam.ohara.TestCreateUser" name="in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithValidInput" time="0.005"/>
+  <testcase classname="in.elayaramanramalingam.ohara.TestCreateUser" name="in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithValidInput" time="0.03"/>
+  <testcase classname="in.elayaramanramalingam.ohara.TestCreateUser" name="in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithInvalidInput" time="0.001"/>
+  <testcase classname="in.elayaramanramalingam.ohara.TestCreateUser" name="in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithEmailNull" time="0.018">
+    <failure message="Unexpected exception thrown: java.lang.Exception: Email cannot be empty or null" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Unexpected exception thrown: java.lang.Exception: Email cannot be empty or null
+	at org.junit.jupiter.api.AssertDoesNotThrow.createAssertionFailedError(AssertDoesNotThrow.java:83)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:54)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:37)
+	at org.junit.jupiter.api.Assertions.assertDoesNotThrow(Assertions.java:3135)
+	at in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithEmailNull(TestCreateUser.java:55)
+Caused by: java.lang.Exception: Email cannot be empty or null
+	at in.elayaramanramalingam.ohara.validation.UserValidator.validate(UserValidator.java:13)
+	at in.elayaramanramalingam.ohara.services.UserServices.create(UserServices.java:31)
+	at in.elayaramanramalingam.ohara.TestCreateUser.lambda$2(TestCreateUser.java:56)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:50)
+	... 21 more
+</failure>
+  </testcase>
+  <testcase classname="in.elayaramanramalingam.ohara.TestCreateUser" name="in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithEmailEmpty" time="0">
+    <failure message="Unexpected exception thrown: java.lang.Exception: Email cannot be empty or null" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Unexpected exception thrown: java.lang.Exception: Email cannot be empty or null
+	at org.junit.jupiter.api.AssertDoesNotThrow.createAssertionFailedError(AssertDoesNotThrow.java:83)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:54)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:37)
+	at org.junit.jupiter.api.Assertions.assertDoesNotThrow(Assertions.java:3135)
+	at in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithEmailEmpty(TestCreateUser.java:77)
+Caused by: java.lang.Exception: Email cannot be empty or null
+	at in.elayaramanramalingam.ohara.validation.UserValidator.validate(UserValidator.java:13)
+	at in.elayaramanramalingam.ohara.services.UserServices.create(UserServices.java:31)
+	at in.elayaramanramalingam.ohara.TestCreateUser.lambda$4(TestCreateUser.java:78)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:50)
+	... 21 more
+</failure>
+  </testcase>
 </testsuite>
