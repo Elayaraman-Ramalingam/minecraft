@@ -23,6 +23,7 @@ public class UserValidator {
 		StringUtil.rejectIfInvalidString(user.getEmail(),"Email");
 		StringUtil.rejectIfInvalidString(user.getPasswd(),"password");
 		StringUtil.rejectIfInvalidString(user.getfName(),"Firstname");
+		StringUtil.rejectIfInvalidString(user.getsName(),"Secondname");
 		
 	}
 }

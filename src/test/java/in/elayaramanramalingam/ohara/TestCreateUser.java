@@ -166,4 +166,47 @@ public class TestCreateUser {
 
 		assertTrue(exceptedMessage.equals(receivedMessage));
 	}
+	@Test
+	public void testCreateUserWithSecondnameNull() throws Exception {
+		UserServices userServices = new UserServices();
+		User user = new User();
+
+		user.setId(124);
+		user.setfName("First");
+		user.setsName(null);
+		user.setEmail("124@google.com");
+		user.setPhone(9344048138l);
+		user.setPasswd("password");
+		user.setStatus(true);
+
+		Exception exception = assertThrows(ValidationException.class, () -> {
+			userServices.create(user);
+		});
+		String exceptedMessage = "Secondname cannot be empty or null";
+		String receivedMessage = exception.getMessage();
+
+		assertTrue(exceptedMessage.equals(receivedMessage));
+	}
+
+	@Test
+	public void testCreateUserWithSecondnameEmpty() throws Exception {
+		UserServices userServices = new UserServices();
+		User user = new User();
+
+		user.setId(124);
+		user.setfName("First");
+		user.setsName("");
+		user.setEmail("124@google.com");
+		user.setPhone(9344048138l);
+		user.setPasswd("password");
+		user.setStatus(true);
+
+		Exception exception = assertThrows(ValidationException.class, () -> {
+			userServices.create(user);
+		});
+		String exceptedMessage = "Secondname cannot be empty or null";
+		String receivedMessage = exception.getMessage();
+
+		assertTrue(exceptedMessage.equals(receivedMessage));
+	}
 }
