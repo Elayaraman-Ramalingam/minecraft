@@ -3,6 +3,9 @@ package in.elayaramanramalingam.ohara.validation;
 
 import in.elayaramanramalingam.ohara.exception.ValidationException;
 import in.elayaramanramalingam.ohara.model.Task;
+
+import java.time.LocalDate;
+
 import in.elayaramanramalingam.ohara.Util.StringUtil;
 
 public class TaskValidator {
@@ -11,6 +14,13 @@ public class TaskValidator {
 		if(task == null) {
 			throw new ValidationException("Invalid user input");
 		}
+		if(task.getDueDate() == null) {
+			throw new ValidationException("Date cannot be null or empty");
+		}
+		if (task.getDueDate().isBefore(LocalDate.now())) {
+		    throw new ValidationException("Task cannot be assigned to the past");
+		}
+
 		
 		StringUtil.rejectIfInvalidString(task.getName(), "Name");
 	}

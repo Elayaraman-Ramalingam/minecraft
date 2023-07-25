@@ -21,9 +21,9 @@ public class UserValidator {
 //			throw new ValidationException("First name cannot be empty or null");
 //		}
 		StringUtil.rejectIfInvalidString(user.getEmail(),"Email");
-		StringUtil.rejectIfInvalidString(user.getPasswd(),"password");
-		StringUtil.rejectIfInvalidString(user.getfName(),"Firstname");
-		StringUtil.rejectIfInvalidString(user.getsName(),"Secondname");
+		StringUtil.rejectIfInvalidString(user.getPassword(),"password");
+		StringUtil.rejectIfInvalidString(user.getFirstName(),"Firstname");
+		StringUtil.rejectIfInvalidString(user.getLastName(),"Secondname");
 		
 	}
 }

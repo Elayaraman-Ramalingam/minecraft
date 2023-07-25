@@ -2,41 +2,48 @@ package in.elayaramanramalingam.ohara.services;
 
 import in.elayaramanramalingam.ohara.model.User;
 import in.elayaramanramalingam.ohara.validation.UserValidator;
+
+import java.util.Set;
+
 import in.elayaramanramalingam.ohara.dao.UserDAO;
 
 public class UserServices {
 
-	public User[] getAll() {
+	public Set<User> getAll() {
 
-		UserDAO userDAO = new UserDAO();
+	    UserDAO userDAO = new UserDAO();
 
-		User[] userList = userDAO.findAll();
+	    Set<User> userList = userDAO.findAll();
 
-		for (int i = 0; i < userList.length; i++) {
-			System.out.println(userList[i]);
-		}
+	    for (User user : userList) {
+	        System.out.println(user);
+	    }
 
-		return userList;
-
+	    return userList;
 	}
-	
-	/**
-	 * Create a new user Object
-	 * @param user userObject
-	 * @throws Exception 
-	 */
+
+
 	public void create(User user) throws Exception {
-		
+
 		UserValidator.validate(user);
 		UserDAO userDAO = new UserDAO();
 		userDAO.create(user);
-		
-	
+
 	}
-	
+
 	public void update(int id, User user) {
 		UserDAO userDAO = new UserDAO();
 		userDAO.update(id, user);
+	}
+
+	public void delete(int id) {
+		UserDAO userDAO = new UserDAO();
+		userDAO.delete(id);
+	}
+
+	public void findById(int id) {
+		UserDAO userDAO = new UserDAO();
+		userDAO.findById(id);
 	}
 
 }

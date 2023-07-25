@@ -19,7 +19,7 @@ public class TestCreateTask {
 		Task task = new Task();
 		task.setId(01);
 		task.setName("Anime");
-		task.setDue(5);
+		task.setDue("07 08 2023");
 		task.setStatus(true);
 		
 		assertDoesNotThrow(()->{
@@ -43,7 +43,7 @@ public class TestCreateTask {
 		Task task = new Task();
 		task.setId(01);
 		task.setName(null);
-		task.setDue(5);
+		task.setDue("07 08 2023");
 		task.setStatus(true);
 		
 		Exception exception = assertThrows(Exception.class, ()->{
@@ -61,7 +61,7 @@ public class TestCreateTask {
 		Task task = new Task();
 		task.setId(01);
 		task.setName("");
-		task.setDue(5);
+		task.setDue("07 08 2023");
 		task.setStatus(true);
 		
 		ValidationException exception = assertThrows(ValidationException.class, ()->{

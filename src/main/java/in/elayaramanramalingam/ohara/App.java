@@ -2,6 +2,9 @@ package in.elayaramanramalingam.ohara;
 
 import in.elayaramanramalingam.ohara.model.User;
 import in.elayaramanramalingam.ohara.services.UserServices;
+
+import java.time.LocalDate;
+
 import in.elayaramanramalingam.ohara.model.Task;
 import in.elayaramanramalingam.ohara.services.TaskServices;
 
@@ -17,10 +20,11 @@ public class App {
 			User user = new User();
 
 			user.setId(124);
-			user.setfName("Elaya");
+			user.setFirstName("Elaya");
+			user.setLastName("jksbkjsbkjvb");
 			user.setEmail("mmm");
 			user.setPhone(9344048138l);
-			user.setPasswd("P@$$w0rD");
+			user.setPassword("P@$$w0rD");
 			user.setStatus(true);
 
 			userServices.create(user);
@@ -36,15 +40,17 @@ public class App {
 
 			Task task = new Task();
 			task.setId(007);
-			task.setName(null);
-			task.setDue(2);
-			task.setStatus(true);
+			task.setName("Name");
+			
+			LocalDate date = LocalDate.of(2023, 12, 8);
+			task.setDueDate(date);
+			task.setActive(true);
 			taskservices.create(task);
 			taskservices.getAll();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			// e.printStackTrace();
-			System.out.println(e.getMessage());
+			System.out.println(e);
 		}
 	}
 
