@@ -6,26 +6,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 
 public class ConnectionUtil {
 
 	public static Connection getConnection() {
+		
+		Dotenv env = Dotenv.load();
+		
+		String url = env.get("DATABASE_HOST");
+		String username = env.get("DATABASE_USERNAME");
+		String password = env.get("DATABASE_PASSWORD");
 
 		Connection connection = null;
-
-		String url = null;
-
-		String username = null;
-
-		String password = null;
 
 		try {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			connection  = DriverManager.getConnection(
-					"jdbc:mysql://aws.connect.psdb.cloud/ohara?sslMode=VERIFY_IDENTITY",
-					  "bog7xv47i1ni3arahpga",
-					  "pscale_pw_OoWBZAgImxcIrnW4sis4NIMFI1xFh33mQ82om4yuMLh");
+			connection  = DriverManager.getConnection(url,username,password);
 
 
 

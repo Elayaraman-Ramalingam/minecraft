@@ -1,4 +1,33 @@
 -------------------------------------------------------------------------------
 Test set: in.elayaramanramalingam.ohara.TestCreateUser
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in in.elayaramanramalingam.ohara.TestCreateUser
+Tests run: 10, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 2.954 s <<< FAILURE! - in in.elayaramanramalingam.ohara.TestCreateUser
+in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithValidInput()  Time elapsed: 2.922 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception thrown: java.lang.RuntimeException: java.lang.RuntimeException: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
+	at org.junit.jupiter.api.AssertDoesNotThrow.createAssertionFailedError(AssertDoesNotThrow.java:83)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:54)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:37)
+	at org.junit.jupiter.api.Assertions.assertDoesNotThrow(Assertions.java:3135)
+	at in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithValidInput(TestCreateUser.java:26)
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
+	at in.elayaramanramalingam.ohara.dao.UserDAO.create(UserDAO.java:66)
+	at in.elayaramanramalingam.ohara.services.UserServices.create(UserServices.java:30)
+	at in.elayaramanramalingam.ohara.TestCreateUser.lambda$testCreateUserWithValidInput$0(TestCreateUser.java:27)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:50)
+	... 16 more
+Caused by: java.lang.RuntimeException: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
+	at in.elayaramanramalingam.ohara.Util.ConnectionUtil.getConnection(ConnectionUtil.java:34)
+	at in.elayaramanramalingam.ohara.dao.UserDAO.create(UserDAO.java:55)
+	... 19 more
+Caused by: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:829)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:449)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:242)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at in.elayaramanramalingam.ohara.Util.ConnectionUtil.getConnection(ConnectionUtil.java:25)
+	... 20 more
+

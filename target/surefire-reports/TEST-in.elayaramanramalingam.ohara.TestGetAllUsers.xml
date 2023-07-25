@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="in.elayaramanramalingam.ohara.TestCreateUser" time="2.954" tests="10" errors="0" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="in.elayaramanramalingam.ohara.TestGetAllUsers" time="0.88" tests="2" errors="0" skipped="0" failures="2">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -58,23 +58,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithValidInput" classname="in.elayaramanramalingam.ohara.TestCreateUser" time="2.922">
-    <failure message="Unexpected exception thrown: java.lang.RuntimeException: java.lang.RuntimeException: java.sql.SQLException: Access denied for user &apos;bog7xv47i1ni3arahpga&apos;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception thrown: java.lang.RuntimeException: java.lang.RuntimeException: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
-	at org.junit.jupiter.api.AssertDoesNotThrow.createAssertionFailedError(AssertDoesNotThrow.java:83)
-	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:54)
-	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:37)
-	at org.junit.jupiter.api.Assertions.assertDoesNotThrow(Assertions.java:3135)
-	at in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithValidInput(TestCreateUser.java:26)
-Caused by: java.lang.RuntimeException: java.lang.RuntimeException: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
-	at in.elayaramanramalingam.ohara.dao.UserDAO.create(UserDAO.java:66)
-	at in.elayaramanramalingam.ohara.services.UserServices.create(UserServices.java:30)
-	at in.elayaramanramalingam.ohara.TestCreateUser.lambda$testCreateUserWithValidInput$0(TestCreateUser.java:27)
-	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:50)
-	... 16 more
-Caused by: java.lang.RuntimeException: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
+  <testcase name="in.elayaramanramalingam.ohara.TestGetAllUsers.testGetAllUsers" classname="in.elayaramanramalingam.ohara.TestGetAllUsers" time="0.401">
+    <failure message="java.sql.SQLException: Access denied for user &apos;bog7xv47i1ni3arahpga&apos;" type="java.lang.RuntimeException"><![CDATA[java.lang.RuntimeException: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
 	at in.elayaramanramalingam.ohara.Util.ConnectionUtil.getConnection(ConnectionUtil.java:34)
-	at in.elayaramanramalingam.ohara.dao.UserDAO.create(UserDAO.java:55)
-	... 19 more
+	at in.elayaramanramalingam.ohara.dao.UserDAO.findAll(UserDAO.java:26)
+	at in.elayaramanramalingam.ohara.services.UserServices.getAll(UserServices.java:16)
+	at in.elayaramanramalingam.ohara.TestGetAllUsers.testGetAllUsers(TestGetAllUsers.java:16)
 Caused by: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -85,10 +74,8 @@ Caused by: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
 	at in.elayaramanramalingam.ohara.Util.ConnectionUtil.getConnection(ConnectionUtil.java:25)
-	... 20 more
+	... 16 more
 ]]></failure>
-    <system-out><![CDATA[java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
-]]></system-out>
     <system-err><![CDATA[java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -99,13 +86,9 @@ Caused by: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
 	at in.elayaramanramalingam.ohara.Util.ConnectionUtil.getConnection(ConnectionUtil.java:25)
-	at in.elayaramanramalingam.ohara.dao.UserDAO.create(UserDAO.java:55)
-	at in.elayaramanramalingam.ohara.services.UserServices.create(UserServices.java:30)
-	at in.elayaramanramalingam.ohara.TestCreateUser.lambda$testCreateUserWithValidInput$0(TestCreateUser.java:27)
-	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:50)
-	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:37)
-	at org.junit.jupiter.api.Assertions.assertDoesNotThrow(Assertions.java:3135)
-	at in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithValidInput(TestCreateUser.java:26)
+	at in.elayaramanramalingam.ohara.dao.UserDAO.findAll(UserDAO.java:26)
+	at in.elayaramanramalingam.ohara.services.UserServices.getAll(UserServices.java:16)
+	at in.elayaramanramalingam.ohara.TestGetAllUsers.testGetAllUsers(TestGetAllUsers.java:16)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -119,28 +102,14 @@ Caused by: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
-java.lang.RuntimeException: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
+]]></system-err>
+  </testcase>
+  <testcase name="in.elayaramanramalingam.ohara.TestGetAllUsers.testFindById" classname="in.elayaramanramalingam.ohara.TestGetAllUsers" time="0.479">
+    <failure message="java.sql.SQLException: Access denied for user &apos;bog7xv47i1ni3arahpga&apos;" type="java.lang.RuntimeException"><![CDATA[java.lang.RuntimeException: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
 	at in.elayaramanramalingam.ohara.Util.ConnectionUtil.getConnection(ConnectionUtil.java:34)
-	at in.elayaramanramalingam.ohara.dao.UserDAO.create(UserDAO.java:55)
-	at in.elayaramanramalingam.ohara.services.UserServices.create(UserServices.java:30)
-	at in.elayaramanramalingam.ohara.TestCreateUser.lambda$testCreateUserWithValidInput$0(TestCreateUser.java:27)
-	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:50)
-	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:37)
-	at org.junit.jupiter.api.Assertions.assertDoesNotThrow(Assertions.java:3135)
-	at in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithValidInput(TestCreateUser.java:26)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.apache.maven.surefire.junit.PojoTestSet.executeTestMethod(PojoTestSet.java:146)
-	at org.apache.maven.surefire.junit.PojoTestSet.executeTestMethods(PojoTestSet.java:108)
-	at org.apache.maven.surefire.junit.PojoTestSet.execute(PojoTestSet.java:89)
-	at org.apache.maven.surefire.junit.JUnit3Provider.executeTestSet(JUnit3Provider.java:140)
-	at org.apache.maven.surefire.junit.JUnit3Provider.invoke(JUnit3Provider.java:113)
-	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+	at in.elayaramanramalingam.ohara.dao.UserDAO.findById(UserDAO.java:118)
+	at in.elayaramanramalingam.ohara.services.UserServices.findById(UserServices.java:46)
+	at in.elayaramanramalingam.ohara.TestGetAllUsers.testFindById(TestGetAllUsers.java:25)
 Caused by: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -151,16 +120,34 @@ Caused by: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
 	at in.elayaramanramalingam.ohara.Util.ConnectionUtil.getConnection(ConnectionUtil.java:25)
-	... 20 more
+	... 16 more
+]]></failure>
+    <system-err><![CDATA[java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:829)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:449)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:242)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at in.elayaramanramalingam.ohara.Util.ConnectionUtil.getConnection(ConnectionUtil.java:25)
+	at in.elayaramanramalingam.ohara.dao.UserDAO.findById(UserDAO.java:118)
+	at in.elayaramanramalingam.ohara.services.UserServices.findById(UserServices.java:46)
+	at in.elayaramanramalingam.ohara.TestGetAllUsers.testFindById(TestGetAllUsers.java:25)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.apache.maven.surefire.junit.PojoTestSet.executeTestMethod(PojoTestSet.java:146)
+	at org.apache.maven.surefire.junit.PojoTestSet.executeTestMethods(PojoTestSet.java:108)
+	at org.apache.maven.surefire.junit.PojoTestSet.execute(PojoTestSet.java:89)
+	at org.apache.maven.surefire.junit.JUnit3Provider.executeTestSet(JUnit3Provider.java:140)
+	at org.apache.maven.surefire.junit.JUnit3Provider.invoke(JUnit3Provider.java:113)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
 ]]></system-err>
   </testcase>
-  <testcase name="in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithInvalidInput" classname="in.elayaramanramalingam.ohara.TestCreateUser" time="0"/>
-  <testcase name="in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithEmailNull" classname="in.elayaramanramalingam.ohara.TestCreateUser" time="0.002"/>
-  <testcase name="in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithEmailEmpty" classname="in.elayaramanramalingam.ohara.TestCreateUser" time="0.002"/>
-  <testcase name="in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithPasswordNull" classname="in.elayaramanramalingam.ohara.TestCreateUser" time="0.004"/>
-  <testcase name="in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithPasswordEmpty" classname="in.elayaramanramalingam.ohara.TestCreateUser" time="0.005"/>
-  <testcase name="in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithFirstnameNull" classname="in.elayaramanramalingam.ohara.TestCreateUser" time="0.003"/>
-  <testcase name="in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithFirstnameEmpty" classname="in.elayaramanramalingam.ohara.TestCreateUser" time="0.003"/>
-  <testcase name="in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithSecondnameNull" classname="in.elayaramanramalingam.ohara.TestCreateUser" time="0.003"/>
-  <testcase name="in.elayaramanramalingam.ohara.TestCreateUser.testCreateUserWithSecondnameEmpty" classname="in.elayaramanramalingam.ohara.TestCreateUser" time="0.004"/>
 </testsuite>

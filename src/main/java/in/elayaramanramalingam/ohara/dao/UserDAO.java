@@ -71,15 +71,31 @@ public class UserDAO {
 	}
 
 	public void update(int id, User user) {
-		Set<User> arr = UserList.listOfUsers;
-		for (User index : arr) {
-			if (index.getId() == id) {
-				arr.remove(index);
-				arr.add(user);
-				break;
-			}
-		}
+	    Connection connection = null;
+	    PreparedStatement ps = null;
+
+	    try {
+	        String query = "UPDATE users SET first_name=?, second_name=? WHERE id=?";
+	        connection = ConnectionUtil.getConnection();
+	        ps = connection.prepareStatement(query);
+	        ps.setString(1, user.getFirstName());
+	        ps.setString(2, user.getLastName());
+	        ps.setInt(3, id);
+	        int rowsUpdated = ps.executeUpdate();
+
+	        if (rowsUpdated > 0) {
+	            System.out.println("User with ID " + id + " updated successfully.");
+	        } else {
+	            System.out.println("No user found with ID " + id + ". Update failed.");
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        throw new RuntimeException(e);
+	    } finally {
+	        ConnectionUtil.close(connection, ps);
+	    }
 	}
+
 
 	public void delete(int userId) {
 		Set<User> userList = UserList.listOfUsers;

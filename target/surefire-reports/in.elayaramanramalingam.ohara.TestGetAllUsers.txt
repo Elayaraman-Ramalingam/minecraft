@@ -1,0 +1,40 @@
+-------------------------------------------------------------------------------
+Test set: in.elayaramanramalingam.ohara.TestGetAllUsers
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.88 s <<< FAILURE! - in in.elayaramanramalingam.ohara.TestGetAllUsers
+in.elayaramanramalingam.ohara.TestGetAllUsers.testGetAllUsers()  Time elapsed: 0.401 s  <<< FAILURE!
+java.lang.RuntimeException: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
+	at in.elayaramanramalingam.ohara.Util.ConnectionUtil.getConnection(ConnectionUtil.java:34)
+	at in.elayaramanramalingam.ohara.dao.UserDAO.findAll(UserDAO.java:26)
+	at in.elayaramanramalingam.ohara.services.UserServices.getAll(UserServices.java:16)
+	at in.elayaramanramalingam.ohara.TestGetAllUsers.testGetAllUsers(TestGetAllUsers.java:16)
+Caused by: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:829)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:449)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:242)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at in.elayaramanramalingam.ohara.Util.ConnectionUtil.getConnection(ConnectionUtil.java:25)
+	... 16 more
+
+in.elayaramanramalingam.ohara.TestGetAllUsers.testFindById()  Time elapsed: 0.479 s  <<< FAILURE!
+java.lang.RuntimeException: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
+	at in.elayaramanramalingam.ohara.Util.ConnectionUtil.getConnection(ConnectionUtil.java:34)
+	at in.elayaramanramalingam.ohara.dao.UserDAO.findById(UserDAO.java:118)
+	at in.elayaramanramalingam.ohara.services.UserServices.findById(UserServices.java:46)
+	at in.elayaramanramalingam.ohara.TestGetAllUsers.testFindById(TestGetAllUsers.java:25)
+Caused by: java.sql.SQLException: Access denied for user 'bog7xv47i1ni3arahpga'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:829)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:449)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:242)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at in.elayaramanramalingam.ohara.Util.ConnectionUtil.getConnection(ConnectionUtil.java:25)
+	... 16 more
+
