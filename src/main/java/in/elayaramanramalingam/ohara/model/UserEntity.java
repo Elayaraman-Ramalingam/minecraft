@@ -1,6 +1,6 @@
 package in.elayaramanramalingam.ohara.model;
 
-public class UserEntity {
+public abstract class UserEntity {
 
 	private int id;
 	private String firstName;

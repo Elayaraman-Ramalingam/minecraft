@@ -27,18 +27,18 @@ public class TaskDAO {
     }
 
     public void delete(int id) {
-        for (Task task : tasks) {
-            if (task.getId() == id) {
-                task.setActive(false);
+        for (Task t : tasks) {
+            if (t.getId() == id) {
+                t.setActive(false);
                 break;
             }
         }
     }
 
     public Task findById(int id) {
-        for (Task task : tasks) {
-            if (task.getId() == id) {
-                return task;
+        for (Task t : tasks) {
+            if (t.getId() == id) {
+                return t;
             }
         }
         return null;

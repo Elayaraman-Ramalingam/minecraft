@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 
 import in.elayaramanramalingam.ohara.model.Task;
@@ -19,8 +21,9 @@ public class TestCreateTask {
 		Task task = new Task();
 		task.setId(01);
 		task.setName("Anime");
-		task.setDue("07 08 2023");
-		task.setStatus(true);
+		LocalDate date = LocalDate.of(2023, 12, 12);
+		task.setDueDate(date);
+		task.setActive(true);
 		
 		assertDoesNotThrow(()->{
 			taskServices.create(task);
@@ -43,8 +46,9 @@ public class TestCreateTask {
 		Task task = new Task();
 		task.setId(01);
 		task.setName(null);
-		task.setDue("07 08 2023");
-		task.setStatus(true);
+		LocalDate date = LocalDate.of(2023, 12, 12);
+		task.setDueDate(date);
+		task.setActive(true);
 		
 		Exception exception = assertThrows(Exception.class, ()->{
 			taskServices.create(task);
@@ -61,8 +65,9 @@ public class TestCreateTask {
 		Task task = new Task();
 		task.setId(01);
 		task.setName("");
-		task.setDue("07 08 2023");
-		task.setStatus(true);
+		LocalDate date = LocalDate.of(2023, 12, 12);
+		task.setDueDate(date);
+		task.setActive(true);
 		
 		ValidationException exception = assertThrows(ValidationException.class, ()->{
 			taskServices.create(task);

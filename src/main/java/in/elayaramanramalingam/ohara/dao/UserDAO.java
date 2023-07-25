@@ -1,6 +1,7 @@
 package in.elayaramanramalingam.ohara.dao;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +22,7 @@ public class UserDAO {
 		ResultSet rs = null;
 
 		try {
-			String query = "SELECT * FROM USERS WHERE isActive = 1 ";
+			String query = "SELECT * FROM users WHERE is_active = 1 ";
 			connection = ConnectionUtil.getConnection();
 			ps = connection.prepareStatement(query);
 			rs = ps.executeQuery();
@@ -31,15 +32,13 @@ public class UserDAO {
 				user.setFirstName(rs.getString("first_name"));
 				user.setLastName(rs.getString("second_name"));
 				user.setEmail(rs.getString("email"));
-				user.setPhone(rs.getLong("phone"));
-				user.setActive(rs.getBoolean("isActive"));
 
 				users.add(user);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println(e.getMessage());
-			throw new RuntimeException();
+			throw new RuntimeException(e);
 		} finally {
 			ConnectionUtil.close(connection, ps, rs);
 		}
@@ -47,8 +46,28 @@ public class UserDAO {
 	}
 
 	public void create(User user) {
-		Set<User> arr = UserList.listOfUsers;
-		arr.add(user);
+
+		Connection connection = null;
+		PreparedStatement ps = null;
+
+		try {
+			String query = "INSERT INTO users(first_name,second_name,email,password)values(?,?,?,?)";
+			connection = ConnectionUtil.getConnection();
+			ps = connection.prepareStatement(query);
+			ps.setString(1,user.getFirstName());
+			ps.setString(2,user.getLastName());
+			ps.setString(3, user.getEmail());
+			ps.setString(4,user.getPassword());
+			ps.executeUpdate();
+			System.out.println("User created");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
+		} finally {
+			ConnectionUtil.close(connection, ps);
+		}
+
 	}
 
 	public void update(int id, User user) {
@@ -73,13 +92,35 @@ public class UserDAO {
 	}
 
 	public User findById(int id) {
-		Set<User> userList = UserList.listOfUsers;
-		for (User user : userList) {
-			if (user.getId() == id) {
-				return user;
-			}
-		}
-		return null;
-	}
+		User user = null;
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
 
+		try {
+			String query = "SELECT * FROM users WHERE is_active = 1 AND id = ? ";
+			connection = ConnectionUtil.getConnection();
+			ps = connection.prepareStatement(query);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				user = new User();
+				user.setId(rs.getInt("id"));
+				user.setFirstName(rs.getString("first_name"));
+				user.setLastName(rs.getString("second_name"));
+				user.setEmail(rs.getString("email"));
+				user.setActive(rs.getBoolean("is_active"));
+				user.setPassword(rs.getString("password"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
+		} finally {
+			ConnectionUtil.close(connection, ps, rs);
+		}
+
+		return user;
+	}
 }

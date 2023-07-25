@@ -41,9 +41,9 @@ public class UserServices {
 		userDAO.delete(id);
 	}
 
-	public void findById(int id) {
+	public User findById(int id) {
 		UserDAO userDAO = new UserDAO();
-		userDAO.findById(id);
+		return userDAO.findById(id);
 	}
 
 }

@@ -19,13 +19,10 @@ public class App {
 
 			User user = new User();
 
-			user.setId(124);
 			user.setFirstName("Elaya");
 			user.setLastName("jksbkjsbkjvb");
 			user.setEmail("mmm");
-			user.setPhone(9344048138l);
 			user.setPassword("P@$$w0rD");
-			user.setStatus(true);
 
 			userServices.create(user);
 			userServices.getAll();
@@ -39,9 +36,8 @@ public class App {
 			TaskServices taskservices = new TaskServices();
 
 			Task task = new Task();
-			task.setId(007);
-			task.setName("Name");
 			
+			task.setName("Name");
 			LocalDate date = LocalDate.of(2023, 12, 8);
 			task.setDueDate(date);
 			task.setActive(true);

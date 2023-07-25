@@ -12,24 +12,22 @@ import in.elayaramanramalingam.ohara.exception.ValidationException;
 
 public class TestCreateUser {
 
-//	@Test
-//	public void testCreateUserWithValidInput() {
-//
-//		UserServices userServices = new UserServices();
-//
-//		User user = new User();
-//
-//		user.setId(124);
-//		user.setfName("Elaya");
-//		user.setEmail("124@google.com");
-//		user.setPhone(9344048138l);
-//		user.setPasswd("P@$$w0rD");
-//		user.setStatus(true);
-////		assertDoesNotThrow(() -> {
-////			userServices.create(user);
-////		});
-//
-//	}
+	@Test
+	public void testCreateUserWithValidInput() {
+
+		UserServices userServices = new UserServices();
+
+		User user = new User();
+
+		user.setFirstName("Elaya");
+		user.setLastName("SenPai");
+		user.setEmail("124@google.com");
+		user.setPassword("P@$$w0rD");
+		assertDoesNotThrow(() -> {
+			userServices.create(user);
+		});
+
+	}
 
 	@Test
 	public void testCreateUserWithInvalidInput() throws Exception {
@@ -47,13 +45,10 @@ public class TestCreateUser {
 	public void testCreateUserWithEmailNull() throws Exception {
 		UserServices userServices = new UserServices();
 		User user = new User();
-
-		user.setId(124);
-		user.setfName("Elaya");
+		user.setFirstName("Elaya");
+		user.setLastName("SenPai");
 		user.setEmail(null);
-		user.setPhone(9344048138l);
-		user.setPasswd("P@$$w0rD");
-		user.setStatus(true);
+		user.setPassword("P@$$w0rD");
 
 		Exception exception = assertThrows(ValidationException.class, () -> {
 			userServices.create(user);
@@ -69,12 +64,10 @@ public class TestCreateUser {
 		UserServices userServices = new UserServices();
 		User user = new User();
 
-		user.setId(124);
-		user.setfName("Elaya");
+		user.setFirstName("Elaya");
+		user.setLastName("SenPai");
 		user.setEmail("");
-		user.setPhone(9344048138l);
-		user.setPasswd("P@$$w0rD");
-		user.setStatus(true);
+		user.setPassword("P@$$w0rD");
 
 		Exception exception = assertThrows(ValidationException.class, () -> {
 			userServices.create(user);
@@ -89,12 +82,10 @@ public class TestCreateUser {
 		UserServices userServices = new UserServices();
 		User user = new User();
 
-		user.setId(124);
-		user.setfName("Elaya");
+		user.setFirstName("Elaya");
+		user.setLastName("SenPai");
 		user.setEmail("124@google.com");
-		user.setPhone(9344048138l);
-		user.setPasswd(null);
-		user.setStatus(true);
+		user.setPassword(null);
 
 		Exception exception = assertThrows(ValidationException.class, () -> {
 			userServices.create(user);
@@ -110,12 +101,10 @@ public class TestCreateUser {
 		UserServices userServices = new UserServices();
 		User user = new User();
 
-		user.setId(124);
-		user.setfName("Elaya");
+		user.setFirstName("Elaya");
+		user.setLastName("SenPai");
 		user.setEmail("124@google.com");
-		user.setPhone(9344048138l);
-		user.setPasswd("");
-		user.setStatus(true);
+		user.setPassword("");
 
 		Exception exception = assertThrows(ValidationException.class, () -> {
 			userServices.create(user);
@@ -130,12 +119,10 @@ public class TestCreateUser {
 		UserServices userServices = new UserServices();
 		User user = new User();
 
-		user.setId(124);
-		user.setfName(null);
+		user.setFirstName(null);
 		user.setEmail("124@google.com");
-		user.setPhone(9344048138l);
-		user.setPasswd("password");
-		user.setStatus(true);
+		user.setPassword("password");
+		user.setActive(true);
 
 		Exception exception = assertThrows(ValidationException.class, () -> {
 			userServices.create(user);
@@ -151,12 +138,10 @@ public class TestCreateUser {
 		UserServices userServices = new UserServices();
 		User user = new User();
 
-		user.setId(124);
-		user.setfName("");
+		user.setFirstName("");
 		user.setEmail("124@google.com");
-		user.setPhone(9344048138l);
-		user.setPasswd("password");
-		user.setStatus(true);
+		user.setPassword("password");
+		user.setActive(true);
 
 		Exception exception = assertThrows(ValidationException.class, () -> {
 			userServices.create(user);
@@ -171,13 +156,11 @@ public class TestCreateUser {
 		UserServices userServices = new UserServices();
 		User user = new User();
 
-		user.setId(124);
-		user.setfName("First");
-		user.setsName(null);
+		user.setFirstName("First");
+		user.setLastName(null);
 		user.setEmail("124@google.com");
-		user.setPhone(9344048138l);
-		user.setPasswd("password");
-		user.setStatus(true);
+		user.setPassword("password");
+		user.setActive(true);
 
 		Exception exception = assertThrows(ValidationException.class, () -> {
 			userServices.create(user);
@@ -193,13 +176,11 @@ public class TestCreateUser {
 		UserServices userServices = new UserServices();
 		User user = new User();
 
-		user.setId(124);
-		user.setfName("First");
-		user.setsName("");
+		user.setFirstName("First");
+		user.setLastName("");
 		user.setEmail("124@google.com");
-		user.setPhone(9344048138l);
-		user.setPasswd("password");
-		user.setStatus(true);
+		user.setPassword("password");
+		user.setActive(true);
 
 		Exception exception = assertThrows(ValidationException.class, () -> {
 			userServices.create(user);

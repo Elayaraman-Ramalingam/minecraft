@@ -23,9 +23,10 @@ public class ConnectionUtil {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection  = DriverManager.getConnection(
-			  "jdbc:mysql://aws.connect.psdb.cloud/ohara?sslMode=VERIFY_IDENTITY",
-			  "8s8pxlyj0ledswtdr3ul",
-			  "pscale_pw_D2FdRxMXHMR2Gs7H7YOcQewg4O9VHSRlLoH7SAgLsam");
+					"jdbc:mysql://aws.connect.psdb.cloud/ohara?sslMode=VERIFY_IDENTITY",
+					  "bog7xv47i1ni3arahpga",
+					  "pscale_pw_OoWBZAgImxcIrnW4sis4NIMFI1xFh33mQ82om4yuMLh");
+
 
 
 		} catch (Exception e) {
