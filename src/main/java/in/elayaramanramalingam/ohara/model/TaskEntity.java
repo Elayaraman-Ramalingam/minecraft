@@ -1,12 +1,14 @@
 package in.elayaramanramalingam.ohara.model;
 
+import java.sql.Date;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class TaskEntity {
 	
 	int id;
 	String name;
-	LocalDate dueDate;
+	Date dueDate;
 	boolean isActive;
 
 	public int getId() {
@@ -25,14 +27,15 @@ public class TaskEntity {
 		this.name = name;
 	}
 
-	public LocalDate getDueDate() {
-		return dueDate;
-	}
+    public Date getDueDate() {
+        return dueDate;
+    }
 
-	public void setDueDate(LocalDate date) {
-		this.dueDate = date;
-	}
-
+    public void setDueDate(String string) {
+        LocalDate localDate = LocalDate.parse(string, DateTimeFormatter.ISO_LOCAL_DATE);
+        Date date = Date.valueOf(localDate);
+        this.dueDate = date;
+    }
 	public boolean isActive() {
 		return isActive;
 	}
@@ -47,17 +50,7 @@ public class TaskEntity {
 	}
 
 	public int compareTo(Task o) {
-
-		if (this.getId() == o.getId()) {
-			return 0;
-		} else {
-			if (this.getId() > o.getId()) {
-				return 1;
-			} else {
-				return -1;
-			}
-			// return ( this.getId() > o.getId()) ? 1: -1;
-		}
+		return this.dueDate.compareTo(o.getDueDate());
 	}
 
 }

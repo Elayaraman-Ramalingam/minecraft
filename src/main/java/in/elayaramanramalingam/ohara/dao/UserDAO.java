@@ -1,8 +1,6 @@
 package in.elayaramanramalingam.ohara.dao;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,9 +11,9 @@ import in.elayaramanramalingam.ohara.model.User;
 
 public class UserDAO {
 
-	public Set<User> findAll() {
+	public List<User> findAll() {
 
-		Set<User> users = new HashSet<>();
+		List<User> users = new ArrayList<>();
 
 		Connection connection = null;
 		PreparedStatement ps = null;
@@ -61,10 +59,13 @@ public class UserDAO {
 			ps.executeUpdate();
 			System.out.println("User created");
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-			throw new RuntimeException(e);
-		} finally {
+			if(e.getMessage().contains("Duplicate entry")) {
+				throw new RuntimeException("Duplicate constraint");
+			} else {
+				System.out.println(e.getMessage());
+				throw new RuntimeException(e);
+			}
+		}finally {
 			ConnectionUtil.close(connection, ps);
 		}
 
@@ -98,13 +99,30 @@ public class UserDAO {
 
 
 	public void delete(int userId) {
-		Set<User> userList = UserList.listOfUsers;
-		for (User user : userList) {
-			if (user.getId() == userId) {
-				user.setActive(false);
-				break;
-			}
+		Connection connection = null;
+		PreparedStatement ps = null;
+
+		try {
+			String query = "UPDATE users SET is_active = 0 AND id = ? ";
+			connection = ConnectionUtil.getConnection();
+			ps = connection.prepareStatement(query);
+			ps.setInt(1, userId);
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
+		} finally {
+			ConnectionUtil.close(connection, ps);
 		}
+//		Set<User> userList = UserList.listOfUsers;
+//		for (User user : userList) {
+//			if (user.getId() == userId) {
+//				user.setActive(false);
+//				break;
+//			}
+//		}
 	}
 
 	public User findById(int id) {
@@ -118,6 +136,36 @@ public class UserDAO {
 			connection = ConnectionUtil.getConnection();
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, id);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				user = new User();
+				user.setId(rs.getInt("id"));
+				user.setFirstName(rs.getString("first_name"));
+				user.setLastName(rs.getString("second_name"));
+				user.setEmail(rs.getString("email"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
+		} finally {
+			ConnectionUtil.close(connection, ps, rs);
+		}
+
+		return user;
+	}
+	public User findByEmail(String Email) {
+		User user = null;
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			String query = "SELECT * FROM users WHERE is_active = 1 AND email = ? ";
+			connection = ConnectionUtil.getConnection();
+			ps = connection.prepareStatement(query);
+			ps.setString(1, Email);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {

@@ -4,7 +4,8 @@ package in.elayaramanramalingam.ohara.validation;
 import in.elayaramanramalingam.ohara.exception.ValidationException;
 import in.elayaramanramalingam.ohara.model.Task;
 
-import java.time.LocalDate;
+import java.sql.Date;
+import java.time.*;
 
 import in.elayaramanramalingam.ohara.Util.StringUtil;
 
@@ -17,7 +18,7 @@ public class TaskValidator {
 		if(task.getDueDate() == null) {
 			throw new ValidationException("Date cannot be null or empty");
 		}
-		if (task.getDueDate().isBefore(LocalDate.now())) {
+		if (task.getDueDate().before(Date.valueOf(LocalDate.now()))) {
 		    throw new ValidationException("Task cannot be assigned to the past");
 		}
 

@@ -3,6 +3,7 @@ package in.elayaramanramalingam.ohara.services;
 import in.elayaramanramalingam.ohara.model.Task;
 import in.elayaramanramalingam.ohara.validation.TaskValidator;
 
+import java.util.List;
 import java.util.Set;
 
 import in.elayaramanramalingam.ohara.dao.TaskDAO;
@@ -10,8 +11,8 @@ import in.elayaramanramalingam.ohara.dao.TaskDAO;
 public class TaskServices {
     TaskDAO taskDAO = new TaskDAO();
 
-    public Set<Task> getAll() {
-        Set<Task> taskList = taskDAO.findAll();
+    public List<Task> getAll() {
+        List<Task> taskList = taskDAO.findAll();
         for (Task task : taskList) {
             System.out.println(task);
         }

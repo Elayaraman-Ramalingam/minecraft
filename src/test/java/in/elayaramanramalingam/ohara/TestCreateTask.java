@@ -19,11 +19,9 @@ public class TestCreateTask {
 	@Test
 	public void testCreateTaskWithValidInput() {
 		Task task = new Task();
-		task.setId(01);
 		task.setName("Anime");
 		LocalDate date = LocalDate.of(2023, 12, 12);
-		task.setDueDate(date);
-		task.setActive(true);
+		task.setDueDate(""+date);
 		
 		assertDoesNotThrow(()->{
 			taskServices.create(task);
@@ -44,11 +42,9 @@ public class TestCreateTask {
 	@Test
 	public void testCreateTaskWithNameNull() {
 		Task task = new Task();
-		task.setId(01);
 		task.setName(null);
 		LocalDate date = LocalDate.of(2023, 12, 12);
-		task.setDueDate(date);
-		task.setActive(true);
+		task.setDueDate(""+date);
 		
 		Exception exception = assertThrows(Exception.class, ()->{
 			taskServices.create(task);
@@ -63,11 +59,9 @@ public class TestCreateTask {
 	@Test
 	public void testCreateTaskWithNameEmpty() {
 		Task task = new Task();
-		task.setId(01);
 		task.setName("");
 		LocalDate date = LocalDate.of(2023, 12, 12);
-		task.setDueDate(date);
-		task.setActive(true);
+		task.setDueDate(""+date);
 		
 		ValidationException exception = assertThrows(ValidationException.class, ()->{
 			taskServices.create(task);
@@ -78,6 +72,24 @@ public class TestCreateTask {
 		
 		assertTrue(exceptedMessage.equals(actualMessage));
 
+	}
+	@Test
+	public void testCreateTaskWithInvalidDate() {
+		Task task = new Task();
+		task.setName("Anime");
+		LocalDate date = LocalDate.of(2003, 12, 12);
+		task.setDueDate(""+date);
+		
+		ValidationException exception = assertThrows(ValidationException.class, ()->{
+			taskServices.create(task);
+		});
+		
+			String exceptedMessage = "Task cannot be assigned to the past";
+			String actualMessage = exception.getMessage();
+			
+			assertTrue(exceptedMessage.equals(actualMessage));
+		
+		
 	}
 
 }

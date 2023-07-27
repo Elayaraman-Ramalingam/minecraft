@@ -3,17 +3,18 @@ package in.elayaramanramalingam.ohara.services;
 import in.elayaramanramalingam.ohara.model.User;
 import in.elayaramanramalingam.ohara.validation.UserValidator;
 
+import java.util.List;
 import java.util.Set;
 
 import in.elayaramanramalingam.ohara.dao.UserDAO;
 
 public class UserServices {
 
-	public Set<User> getAll() {
+	public List<User> getAll() {
 
 	    UserDAO userDAO = new UserDAO();
 
-	    Set<User> userList = userDAO.findAll();
+	    List<User> userList = userDAO.findAll();
 
 	    for (User user : userList) {
 	        System.out.println(user);

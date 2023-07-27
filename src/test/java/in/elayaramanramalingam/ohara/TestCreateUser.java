@@ -1,8 +1,11 @@
 package in.elayaramanramalingam.ohara;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.sql.SQLException;
 
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +24,7 @@ public class TestCreateUser {
 
 		user.setFirstName("Elaya");
 		user.setLastName("SenPai");
-		user.setEmail("124@google.com");
+		user.setEmail("1241@google.com");
 		user.setPassword("P@$$w0rD");
 		assertDoesNotThrow(() -> {
 			userServices.create(user);
@@ -77,6 +80,7 @@ public class TestCreateUser {
 
 		assertTrue(exceptedMessage.equals(receivedMessage));
 	}
+
 	@Test
 	public void testCreateUserWithPasswordNull() throws Exception {
 		UserServices userServices = new UserServices();
@@ -84,7 +88,7 @@ public class TestCreateUser {
 
 		user.setFirstName("Elaya");
 		user.setLastName("SenPai");
-		user.setEmail("124@google.com");
+		user.setEmail("1241@google.com");
 		user.setPassword(null);
 
 		Exception exception = assertThrows(ValidationException.class, () -> {
@@ -114,13 +118,14 @@ public class TestCreateUser {
 
 		assertTrue(exceptedMessage.equals(receivedMessage));
 	}
+
 	@Test
 	public void testCreateUserWithFirstnameNull() throws Exception {
 		UserServices userServices = new UserServices();
 		User user = new User();
 
 		user.setFirstName(null);
-		user.setEmail("124@google.com");
+		user.setEmail("1241@google.com");
 		user.setPassword("password");
 		user.setActive(true);
 
@@ -151,6 +156,7 @@ public class TestCreateUser {
 
 		assertTrue(exceptedMessage.equals(receivedMessage));
 	}
+
 	@Test
 	public void testCreateUserWithSecondnameNull() throws Exception {
 		UserServices userServices = new UserServices();
@@ -158,7 +164,7 @@ public class TestCreateUser {
 
 		user.setFirstName("First");
 		user.setLastName(null);
-		user.setEmail("124@google.com");
+		user.setEmail("1241@google.com");
 		user.setPassword("password");
 		user.setActive(true);
 
@@ -178,7 +184,7 @@ public class TestCreateUser {
 
 		user.setFirstName("First");
 		user.setLastName("");
-		user.setEmail("124@google.com");
+		user.setEmail("1241@google.com");
 		user.setPassword("password");
 		user.setActive(true);
 
@@ -190,4 +196,27 @@ public class TestCreateUser {
 
 		assertTrue(exceptedMessage.equals(receivedMessage));
 	}
+//	@Test
+//	public void testCreateUserWithDupicateEmail() throws Exception {
+//		UserServices userservices = new UserServices();
+//		
+//		User user = new User();
+//		
+//		user.setFirstName("First");
+//		user.setLastName("Last");
+//		user.setEmail("1241@google.com");
+//		user.setPassword("password");
+//		
+//		Exception exception = assertThrows(SQLException.class , ()->{
+//			userservices.create(user);
+//		});
+//		
+//		String exceptedMessage = "Duplicate";
+//		String receivedMessage = exception.getMessage();
+//		
+//		System.out.println(receivedMessage);
+//		
+//		assertTrue(receivedMessage.contains(exceptedMessage));
+//	}
+
 }

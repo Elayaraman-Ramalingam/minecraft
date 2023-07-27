@@ -1,5 +1,6 @@
 package in.elayaramanramalingam.ohara;
 
+import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,7 @@ public class TestGetAllUsers {
 	public void testGetAllUsers() {
 		UserServices userser = new UserServices();
 		
-		Set<User> users = userser.getAll();
+		List<User> users = userser.getAll();
 		
 		System.out.println(users);
 	}
